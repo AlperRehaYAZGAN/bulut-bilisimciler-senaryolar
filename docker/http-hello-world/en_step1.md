@@ -6,7 +6,7 @@
 
 Docker kendi "Deamon" ismi veirlen ana motoru ile birlikte Container Servislerini oluşturmakta yönetmekte ve son verebilmektedir. Bu sebeple uygulama geliştiricisi tarafından kodlanan ve dağıtıma çıkmaya hazır olan kodlar bu ana motor-Deamon- ile iletişime geçip paket haline getirilerek basit komutlar ile dağıtıma çıkabilmektedirler. Sizlerle şimdi dış dünya tarafından erişilebilmesi için HTTP Web Servisi yazacağız ve bu servisi basit Docker komutlarını öğrenerek herkes tarafından erişilebilir bir hale getireceğiz.  
 
-[Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-hello-world.png)  
+![Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-hello-world.png)  
 
 
 #### Talimatlar  

@@ -6,7 +6,7 @@
 
 Docker Container Runtime uygulaması kendi uygulama motoru ile Container Paketi haline getirilmiş uygulamaları çalıştırabilmekte ve deploy(dağıtıma çıkarma) operasyonlarını kolaylaştırabilmektedir. Kodlama dünyasında açık kaynak yazılım ekipleri tarafından geliştirilen büyük projeler de artık Docker Image'ları haline getirilip push-to-deploy kavramınca ürüne dönüşmektedirler. Bizler de bu senaryomuzda sizlerle Mikroservis mimarilerinde gelen isteği kendi iç servislerinize nasıl kolayca yönlendirebileceğinizi gerçekleştirmeniz için önemli bir kavram olan API Gateway kavramını [Traefik](https://traefik.io/) kullanarak gerçek bir senaryo ile öğreneceksiniz.  
 
-[Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-gateway.png)
+![Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-gateway.png)
 
 
 #### Talimatlar  
