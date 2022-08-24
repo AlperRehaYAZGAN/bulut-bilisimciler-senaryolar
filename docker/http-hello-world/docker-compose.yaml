@@ -1,0 +1,11 @@
+# docker run -d --rm \
+#  --name bba-http-test \ 
+# -p 8080:8000 crccheck/hello-world
+
+version: '3'
+
+services:
+  helloworlddocker:
+    image: crccheck/hello-world
+    ports:
+      - "8000:8000"

@@ -1,0 +1,9 @@
+# docker run --name bba-nginx -d -p 8080:80 nginx:1.22.0-alpine 
+
+version: '3'
+
+services:
+  nginxapp:
+    image: nginx:1.22.0-alpine
+    ports:
+      - "8080:80"

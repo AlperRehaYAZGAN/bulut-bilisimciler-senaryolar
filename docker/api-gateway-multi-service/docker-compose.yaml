@@ -1,0 +1,48 @@
+# API Gateway Test 
+version: "3"
+
+services:
+  # api gateway
+  traefikapp: # traefik:v2.5
+    image: traefik:v2.5
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.yml:/etc/traefik/traefik.yml
+    command: --configfile=/etc/traefik/traefik.yml
+  # google drive clone
+  cdnapp: # rancher/minio-minio
+    image: rancher/minio-minio:RELEASE.2020-07-13T18-09-56Z
+    container_name: cdnapp
+    ports:
+      - "9000:9000" 
+    environment:
+      - "MINIO_ROOT_USER=miniominio"
+      - "MINIO_ROOT_PASSWORD=miniominio"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alyacdndashhttp.entrypoints=web"
+      - "traefik.http.routers.alyacdndashhttp.rule=(PathPrefix(`/cdn`) || PathPrefix(`/minio`))"
+      - "traefik.http.routers.alyacdndashhttp.service=alyacdndashservice"
+      - "traefik.http.services.alyacdndashservice.loadbalancer.server.port=9000"
+    restart: always
+    # pass server /data to minio
+    command: server /data
+  # Hello World
+  helloworlddocker: # crccheck/hello-world
+    image: crccheck/hello-world
+    container_name: helloworlddocker
+    ports:
+      - "8000:8000"    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alyahellohttp.entrypoints=web"
+      - "traefik.http.routers.alyahellohttp.rule=PathPrefix(`/hello`)"
+      - "traefik.http.routers.alyahellohttp.service=alyahelloservice"
+      - "traefik.http.services.alyahelloservice.loadbalancer.server.port=8000"
+
+

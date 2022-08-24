@@ -1,0 +1,30 @@
+# docker run --name alyaogar3 -p 8080:8080 -d alperreha/ogar3:1.0.4
+
+version: '3'
+
+services:
+  # api gateway
+  traefikapp: # traefik:v2.5
+    image: traefik:v2.5
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.yml:/etc/traefik/traefik.yml
+    command: --configfile=/etc/traefik/traefik.yml
+  # agar.io
+  ogarapp: # alperreha/ogar3:1.0.4
+    image: alperreha/ogar3:1.0.4
+    container_name: ogarapp
+    ports:
+      - "9090:8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alyaogarhttp.entrypoints=web"
+      - "traefik.http.routers.alyaogarhttp.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.alyaogarhttp.service=alyaogarservice"
+      - "traefik.http.services.alyaogarservice.loadbalancer.server.port=8080"
+ 

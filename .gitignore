@@ -1,0 +1,5 @@
+# .DS_Store
+.DS_Store
+
+# all .DS_Store files .gitignore
+*.DS_Store

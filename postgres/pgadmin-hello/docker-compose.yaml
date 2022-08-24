@@ -1,0 +1,26 @@
+# This is the simple postgresql:9.6 alpine image and pgadmin docker-compose yaml file
+
+version: '3'
+
+services:
+  # postgresql
+  postgresapp:
+    image: postgres:9.6-alpine3.15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=mysecretpass
+      - POSTGRES_USER=mysuperuser
+      - POSTGRES_DB=mydatabase
+    restart: always
+  # pgadmin
+  pgadminapp:
+    image: dpage/pgadmin4:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgresapp
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=1020304050
+    restart: always

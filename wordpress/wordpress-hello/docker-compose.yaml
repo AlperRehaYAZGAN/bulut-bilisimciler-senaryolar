@@ -1,0 +1,35 @@
+# Sample docker-compose.yml file for wordpress, and mysql
+version: '3'
+
+services:
+  wordpressapp:
+    image: wordpress:beta-php8.1-fpm-alpine
+    networks:
+      - alyafnnet
+    restart: always
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysqlapp
+    environment:
+      WORDPRESS_DB_HOST: mysqlapp
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+  mysqlapp:
+    image: mysql:5.7
+    networks:
+      - alyafnnet
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+# network: alyafnnet
+networks:
+  alyafnnet:
+    name: alyafnnet
+    driver: bridge
