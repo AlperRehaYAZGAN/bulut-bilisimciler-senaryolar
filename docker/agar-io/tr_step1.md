@@ -6,8 +6,7 @@
 
 Docker Container Runtime uygulaması kendi uygulama motoru ile Container Paketi haline getirilmiş uygulamaları çalıştırabilmekte ve deploy(dağıtıma çıkarma) operasyonlarını kolaylaştırabilmektedir. Kodlama dünyasında açık kaynak yazılım ekipleri tarafından geliştirilen büyük projeler de artık Docker Image'ları haline getirilip push-to-deploy kavramınca ürüne dönüşmektedirler. Bizler de bu senaryomuzda sizlerle 2015 yılında çıkan ve 300 bin kişi tarafından canlı olarak oynanan bir oyun olan Agar.io oyununun açık kaynak replika projesi olan Ogar projesini birlikte saniyeler içerisinde çalıştıracağız ve isteyen herkesin bu uygulamaya erişebilmesini basit Docker komutlarını uygulayarak gerçekleştireceğiz.  
 
-[Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-ogar.png)
-
+![Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-ogar.png)
 #### Talimatlar  
 
 Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki adımları gerçekleştirmemiz gerekmektedir.  
