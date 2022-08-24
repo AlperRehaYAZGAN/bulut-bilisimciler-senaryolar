@@ -17,11 +17,11 @@ Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki ad�
 
 - ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onu inceleyelim.  
 
-- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Halka Açık Mağazasından Kavram İspatı(Proof-of-Concept) Container Image'ı olan "[Docker HTTP Hello World](https://hub.docker.com/r/crccheck/hello-world)" uygulamamızı ``docker run -d --rm --name bba-http-test -p 8080:8000 crccheck/hello-world`` ayağa kaldıralım.  
+- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Halka Açık Mağazasından Kavram İspatı(Proof-of-Concept) Container Image'ı olan "[Docker HTTP Hello World](https://hub.docker.com/r/crccheck/hello-world)" uygulamamızı ``docker run -d --rm --name bb-http-test -p 8080:8000 crccheck/hello-world`` ayağa kaldıralım.  
 
 - Tebrikler ilk uygulamanızı çalıştırdınız! Şimdi çalıştırdığınız uygulamanın statü halini kontrol etmeniz için ``docker ps`` diyerek ayakta olan uygulamaları inceleyiniz.  
 
-- Uygulamanızı "bba-http-test" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
+- Uygulamanızı "bb-http-test" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
 
 - Çalışan uygulamaya erişmek için sağ yukarıda bulunan "Sunucuya Eriş" butonuna tıklayarak uygulamayı ayağa kaldırdığınız port olan "8080" port numarasını girerek servisinize erişebilirsiniz.  
 

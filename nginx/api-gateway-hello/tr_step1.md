@@ -14,11 +14,11 @@ Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki ad�
 
 - ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onları inceleyelim.  
 
-- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Container Image'ı olan "[Docker NGINX Image](https://hub.docker.com/_/nginx)" uygulamamızı ``docker run --name bba-nginx -d -p 8080:80 nginx:1.22.0-alpine`` komutu ile ayağa kaldıralım.  
+- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Container Image'ı olan "[Docker NGINX Image](https://hub.docker.com/_/nginx)" uygulamamızı ``docker run --name bb-nginx -d -p 8080:80 nginx:1.22.0-alpine`` komutu ile ayağa kaldıralım.  
 
 - Tebrikler ilk NGINX uygulamanızı çalıştırdınız! Şimdi çalıştırdığınız uygulamanın statü halini kontrol etmeniz için ``docker ps`` diyerek ayakta olan uygulamaları inceleyiniz.  
 
-- Uygulamanızı "bba-nginx" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
+- Uygulamanızı "bb-nginx" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
 
 - Çalışan uygulamaya erişmek için sağ yukarıda bulunan "Sunucuya Eriş" butonuna tıklayarak uygulamayı ayağa kaldırdığınız port olan "8080" port numarasını girerek servisinize erişebilirsiniz.  
 

@@ -16,11 +16,11 @@ Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki ad�
 
 - ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onları inceleyelim.  
 
-- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Container Image'ı olan "[Docker Ogar Image](https://hub.docker.com/r/alperreha/ogar3)" uygulamamızı ``docker run --name bba-ogar3 -p 8080:8080 -d alperreha/ogar3:1.0.4`` komutu ile ayağa kaldıralım.  
+- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Container Image'ı olan "[Docker Ogar Image](https://hub.docker.com/r/alperreha/ogar3)" uygulamamızı ``docker run --name bb-ogar3 -p 8080:8080 -d alperreha/ogar3:1.0.4`` komutu ile ayağa kaldıralım.  
 
 - Tebrikler Docker ile canlı oyun uygulamanızı çalıştırdınız! Şimdi çalıştırdığınız uygulamanın statü halini kontrol etmeniz için ``docker ps`` diyerek ayakta olan uygulamaları inceleyiniz.  
 
-- Uygulamanızı "bba-ogar3" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
+- Uygulamanızı "bb-ogar3" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
 
 - Çalışan uygulamaya erişmek için sağ yukarıda bulunan "Sunucuya Eriş" butonuna tıklayarak uygulamayı ayağa kaldırdığınız port olan "8080" port numarasını veya o servisin önüne koyduğunuz yönlendirici servis olan (Gateway) "80" portunu girerek servisinize erişebilirsiniz.  
 

@@ -17,9 +17,9 @@ Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki ad�
 
 - ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onları inceleyelim.  
 
-- Docker motorumuz ayakta ve çalışmakta. Şimdi sizlere bu demo için özel olarak hazırlanmış bir kaynak deposunu çağırıp uygulamanızı başlatmanız için kod deposunu uzak kaynaktan ```git clone https://github.com/AlperRehaYAZGAN/bulut-bilisim-akademi-demo.git bba-demo``` komutuyla kodu indirelim.  
+- Docker motorumuz ayakta ve çalışmakta. Şimdi sizlere bu demo için özel olarak hazırlanmış bir kaynak deposunu çağırıp uygulamanızı başlatmanız için kod deposunu uzak kaynaktan ```git clone https://github.com/AlperRehaYAZGAN/bulut-bilisim-akademi-demo.git bb-demo``` komutuyla kodu indirelim.  
 
-- İndirdiğimiz klasör dizinine ``cd bba-demo/3-api-gateway-multi-service`` diyerek gidelim.  
+- İndirdiğimiz klasör dizinine ``cd bb-demo/3-api-gateway-multi-service`` diyerek gidelim.  
 
 - Ardından sizlerle gerçekleştirmek istediğimiz mimari için ``docker-compose up -d`` komutunu çalıştıralım ve servisimizin çalışır duruma gelmesini bekleyelim.  
 
