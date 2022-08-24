@@ -1,8 +1,6 @@
-# Docker NGINX Hello World
-
-## Bu Senaryoda ilk NGINX API Gateway uygulamanızı dağıtıma çıkartacaksınız. 2/2  
-
-###  Seviye: Başlangıç
+###  Seviye: Başlangıç  
+  
+Bu Senaryoda ilk NGINX API Gateway uygulamanızı dağıtıma çıkartacaksınız. 2/2
 
 Docker Container Runtime uygulaması kendi uygulama motoru ile Container Paketi haline getirilmiş uygulamaları çalıştırabilmekte ve deploy(dağıtıma çıkarma) operasyonlarını kolaylaştırabilmektedir. Kodlama dünyasında açık kaynak yazılım ekipleri tarafından geliştirilen büyük projeler de artık Docker Image'ları haline getirilip push-to-deploy kavramınca ürüne dönüşmektedirler. Bizler de bu senaryomuzda sizlerle dış dünya tarafından erişime açılabilecek ve dış dünyadan gelen istekleri kendi iç servislerimize yönlendirecek bir İstek Yönlendiricisi (API Gateway) yazıp bu servisi basit Docker komutlarını uygulayarak bir servis haline getireceğiz.  
 
