@@ -3,7 +3,7 @@ version: '3'
 
 services:
   wordpressapp:
-    image: wordpress:beta-php8.1-fpm-alpine
+    image: wordpress:beta-php8.1-apache
     networks:
       - alyafnnet
     restart: always
