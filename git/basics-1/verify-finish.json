@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "[ -d /home/my-project ] && exit 0"
+    ]
+}
