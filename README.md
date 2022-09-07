@@ -17,7 +17,7 @@ Kolayca bilgisayarınıza kurup çalıştırabilmeniz için hazır config dosyal
 
 - Git deposunu lokal alanınıza çekin.  
 ```sh
-$ git clone https://github.com/AlperRehaYAZGAN/bulut-bilisim-akademi-demo.git bulut-bilisim-demo
+$ git clone https://gitlab.bulutbilisimciler.com/bb-public/scenarios bulut-bilisim-demo
 ```  
 
 - Proje dizinine gidin.  
