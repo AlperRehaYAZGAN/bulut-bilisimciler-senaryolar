@@ -27,17 +27,17 @@ $ cd bulut-bilisim-demo
 
 - İstediğiniz demo klasörüne gidin.  
 ```sh
-$ cd 1-hello-world
+$ cd docker/agar-io
 ```  
 
-- İlgili proje ile ilgili adımların bulunduğu talimatların bulunduğu dosyayı inceleyin.  
+- İlgili proje ile ilgili adımların bulunduğu bilgilerinin bulunduğu dosyayı inceleyin.  
 ```sh
-$ cat README.md
+$ cat index.json
 ```  
-
-- Projeyi test etmek için docker-compose ile çalıştırın.  
+  
+- Senaryo step dosyalarını inceleyerek adımları gerçekleştirin.  
 ```sh
-$ docker-compose up -d
+$ cat tr_step1.md
 ```  
 
 - Senaryoların tadını çıkarın...
