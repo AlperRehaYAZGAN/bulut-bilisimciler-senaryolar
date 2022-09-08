@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "[ -d /tmp/BB1 ] && exit 0"
+    ]
+}
