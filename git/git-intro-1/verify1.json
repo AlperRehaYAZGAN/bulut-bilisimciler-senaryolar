@@ -2,6 +2,6 @@
     "command": [
         "sh",
         "-c",
-        "[ -d /tmp/BB1 ] && exit 0"
+        "[ -f /tmp/BB1 ] && exit 0"
     ]
 }
