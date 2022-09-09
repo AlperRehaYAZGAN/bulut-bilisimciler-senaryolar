@@ -2,6 +2,6 @@
     "command": [
         "sh",
         "-c",
-        "git log | grep "egitime ekleme yapildi" > /dev/null && exit 0"
+        "cd /data/git/bb/ && git log | grep "ekleme" && exit 0"
     ]
 }
