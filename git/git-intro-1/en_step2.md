@@ -8,11 +8,11 @@ mkdir -p /data/git/first_project
 cd /data/git/first_project
 ```
 
-**Git** persistent hash - değişiklik kayıt altına alma
+**Git** Git SHA1 algoritması kullanarak verileri adreslemek için HASH'ler object database içerisinde kayıt altına alır. 
 ```
 echo "Bulut Bilisimciler" |git hash-object --stdin -w
 ```
-**Git** init yapıp projeyi oluşturmak gerekecektir. Yoksa yukarıdaki komut çalışmayacaktır.
+**Git** Daha öncesinde hash-object ile oluşturduğumuz bir HASH'i kaydetmek istediğimizde git uygun projeyi ve dosya yapısını bulamadığından HASH adresleyemeyecektir.  Bunun için git init ile ilk projeyi oluşturmak gerekecektir. 
 ```
 git init
 ```
@@ -20,7 +20,7 @@ git init
 echo "Bulut Bilisimciler" |git hash-object --stdin -w
 ```
 
-**.git** dizini folder yapısı için
+**.git** dizini folder yapısı detaylıca kontrol edilerek Objeclerin hangi mantıkta adreslendiği kontrol edilebilir. 
 ```
 ls -alrt /data/git/first_project/.git
 ```
@@ -36,11 +36,11 @@ hint: 'development'. The just-created branch can be renamed via this command:
 hint: 
 hint:   git branch -m <name>
 ```
-**Branch** Change
+**Branch**  değişikliği aşağıdaki komut ile yapılabilir. Bu konu diğer session'larda değerlendirilecektir. 
 ```
 git branch -m main
 ```
-**Content** ve içerik kontolü
+**Content** içerik kontrolü ve adreslenen hash aşağıdaki komutlarla kontrol edilebilir. 
 ```
 git cat-file  c1c17c00601a11f5e1cc4625059e8053f8cea5579b -t 
 ```

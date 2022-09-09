@@ -1,4 +1,21 @@
-## Senaryo 2 - Versiyonlama
+## Senaryo 5 - Versiyonlama
+
+Eğer bir önceki senaryoda belirtilen çalışma ortamını tekrar oluşturmak istiyorsanız aşağıdaki komutları çalıştırabilirsiniz. Hali hazırda zaten ilk commit çalıştığınız session'da yapılmışsa bu adımı atlayabilirsiniz.
+
+```
+mkdir -p /data/git/bb
+echo "Python" > /data/git/bb/egitim.txt
+mkdir /data/git/bb/icerik
+echo "Bulut Bilisimciler" >  /data/git/bb/icerik/README.txt
+echo "Python" > /data/git/bb/icerik/python.txt
+cd /data/git/bb
+git init
+git add icerik/
+git add egitim.txt
+git config --global user.email "ayildirim@bulutbilisimciler.com"
+git config --global user.name "Abdurrahim YILDIRIM"
+git commit -m "ilk commit"
+```
 
 **Versiyonlama** yapısını anlamak için proje dizinimiz altında egitim.txt dosyamıza içerik ekliyoruz. Sonrasında "git add"  ile stage atıyor ve "git commit" ile değişikliği onaylıyoruz.  
 ```

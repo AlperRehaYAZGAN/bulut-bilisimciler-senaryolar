@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "git log | grep "egitime ekleme yapildi" > /dev/null && exit 0"
+    ]
+}
