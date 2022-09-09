@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "[ -d /data/git/first_project/.git ] && exit 0"
+    ]
+}

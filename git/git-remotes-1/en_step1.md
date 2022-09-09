@@ -4,7 +4,10 @@
 
 **Git Clone** ile uzak repository de bulunan master branch  local alana alınır. 
 ```
-git clone https://yildirima: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@github.com/yildirima/bb-101.git
+git clone https://<username>:<git_user_token>@github.com/<username>/<project_name>.git
+```
+```
+cd <project_name>
 ```
 ```
 cat .git/config

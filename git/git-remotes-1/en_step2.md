@@ -15,14 +15,14 @@ git  log
 git show-ref  master
 ```
 ```
-git remote add origin https://yildirima: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@github.com/yildirima/bb-101.git
+git remote add origin https://<username>:<git_user_token>@github.com/<username>/<project_name>.git
 ```
 ```
 git push 
 ```
 **git clone** aşamasında bir token tanımlamadıysanız aşağıdaki yönergeyi push adımında uygulayabilirsiniz. 
 ```
-git remote add origin https://yildirima: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@github.com/yildirima/bb-101.git
+git remote add origin https://<username>:<git_user_token>@github.com/<username>/<project_name>.git
 ```
 ```
 git branch
