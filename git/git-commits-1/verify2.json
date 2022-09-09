@@ -2,6 +2,6 @@
     "command": [
         "sh",
         "-c",
-        "cd /data/git/bb/ && git log | grep "ekleme" && exit 0"
+        "[[ $(git log --pretty=format:'' | wc -l) -ge 2 ]] && exit 0"
     ]
 }
