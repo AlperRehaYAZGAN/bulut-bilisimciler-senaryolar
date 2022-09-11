@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "[ -x $(command -v ansible) ] && exit 0"
+    ]
+}

@@ -1,20 +1,21 @@
 ### Ansible Shell Module
 
-Bu adımda uzak makinelerimize nano editörünü ansible ile kuracağız. Bu işlem için `shell` modülünü kullanabiliriz.
+Bu adımda uzak makinelerimize python kurulumu yapalım. Bu işlem için `shell` modülünü kullanabiliriz.
 
 ````
-ansible all -m shell -a "apk add nano"
+ansible all -m shell -a "apk add python3"
 ````
 
 Aşağıdakine benzer bir şekilde çıktı almalısınız.
 
 ````
 node2 | CHANGED | rc=0 >>
-fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86_64/APKINDEX.tar.gz
-fetch https://dl-cdn.alpinelinux.org/alpine/v3.16/community/x86_64/APKINDEX.tar.gz
-(1/1) Installing nano (6.3-r0)
-Executing busybox-1.35.0-r17.trigger
 OK: 395 MiB in 157 packages
+[WARNING]: Platform linux on host node3 is using the discovered Python
+interpreter at /usr/bin/python3.10, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.13/reference_appendices/interpreter_discovery.html for more information.
 ````
 Tebrikler ! 
 Bu bölümü başarıyla tamamladınız.

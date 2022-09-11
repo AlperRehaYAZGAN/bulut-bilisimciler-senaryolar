@@ -7,7 +7,7 @@ Ansible SSH protokolünu kullanarak haberleşir. Managed Node’a bağlanmak ist
 ```
 ssh-keygen -t rsa
 ````
-Oluşturulan ssh key'i uzaktan bağlanacağımız node'a aşağıdaki komut ile kopyalıyoruz.
+Oluşturulan ssh key'i uzaktan bağlanacağımız node'a aşağıdaki komut ile kopyalıyoruz.Burada root şifresi "**root**" olarak girilmelidir.
 
 ````
 ssh-copy-id -i /root/.ssh/id_rsa.pub root@node2
