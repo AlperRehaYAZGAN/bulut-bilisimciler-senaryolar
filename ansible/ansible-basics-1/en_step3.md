@@ -5,26 +5,25 @@ Bu adımda, managed node'lar ile bağlantı kurarak basit bir şekilde inventory
 Ansible SSH protokolünu kullanarak haberleşir. Managed Node’a bağlanmak istiyorsanız control node üzerinde ssh key oluşturup managed node’a göndermelisiniz. Aşağıdaki komut ssh key oluşturacaktır. Komutu çalıştırdığınızda karşınıza gelen adımlarda `enter` tuşuna basara ilerletiniz.
 
 ```
-# ssh-keygen -t rsa
+ssh-keygen -t rsa
 ````
-Oluşturulan ssh key'i uzaktan bağlanacağımız node'a aşağıdaki komut ile kopyalıyoruz. (Burada 1.1.1.1 olarak belirtilen ip değişecektir.)
+Oluşturulan ssh key'i uzaktan bağlanacağımız node'a aşağıdaki komut ile kopyalıyoruz.
 
 ````
-# ssh-copy-id -i /root/.ssh/id_rsa.pub root@1.1.1.1
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node2
 `````
-Inventory dosyası için varsayılan konum  `/etc/ansible/hosts` dosyasıdır.
+Inventory dosyası için varsayılan konum  "**/etc/ansible/hosts**" dosyasıdır.
 
 Hosts dosyası içerisinde eklediğimiz bilgiler bizim managed node'larımızı temsil eder. Control node üzerinden bu bu management nodelara erişip uzaktan yönetimini sağlayabiliriz.
 
-Öncelikle `/etc` dizinine gidilir 
+Öncelikle "**/etc**" dizinine gidilir 
 `ls` komutu ile ansible dizini oluşmuş mu kontrol edilir.
 Dizin yok ise aşağıdaki komutu ile ansible dizini oluşturulur.
-`vi /etc/ansible/hosts` komutu ile inventory dosyası oluşturularak editor aracılığıyla düzenlenir.
 
 ````
-# mkdir /etc/ansible
-# vi /etc/ansible/hosts
+mkdir /etc/ansible
 ````
+`vi /etc/ansible/hosts` komutu ile inventory dosyası oluşturularak editor aracılığıyla düzenlenir.
 
 Basit bir şekilde inventory dosyası oluşturmak için hosts dosyasının içerisine aşağıdaki gibi uzaktan bağlantı sağlanacak node hostname'ini yazıp kaydedelim. 
 

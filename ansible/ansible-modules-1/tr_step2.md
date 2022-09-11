@@ -11,7 +11,8 @@ Bu adımda, Ad-hoc komutları ile dosya kopyalama işlemi yapacağız. Bu işlem
 Hosts dosyamızın içerisine aşağıdaki şekilde node'ları ekleyelim.
 
 ````
-# vi /etc/ansible/hosts
+mkdir /etc/ansible
+vi /etc/ansible/hosts
 ````
 
 ````
@@ -19,10 +20,23 @@ Hosts dosyamızın içerisine aşağıdaki şekilde node'ları ekleyelim.
 node2
 node3
 ````
-Şimdi terminal sunucumuz üzerinde bir txt dosyası oluşturalım.
+Önceki senaryomuzdan ansible hosts dosyamız içindeki node'lara erişim için SSH protokolünü kullandığını biliyoruz. Bu yüzden control node üzerinde ssh key oluşturup managed node’a göndermelisiniz. Aşağıdaki komut ssh key oluşturacaktır. Komutu çalıştırdığınızda karşınıza gelen adımlarda enter tuşuna basara ilerletiniz.
 
 ````
-# touch /tmp/bulutbilisimciler.txt
+ssh-keygen -t rsa
+````
+
+Oluşturulan ssh key'i uzaktan bağlanacağımız node'lara aşağıdaki komut ile kopyalıyoruz.
+
+````
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node2
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node3
+````
+
+Şimdi control node (node1) üzerinde bir txt dosyası oluşturalım.
+
+````
+touch /tmp/bulutbilisimciler.txt
 ````
 Oluşturduğumuz bu dosyayı ansible aracılığıyla hosts dosyamızdaki sunuculara kopyalayacağız.
 

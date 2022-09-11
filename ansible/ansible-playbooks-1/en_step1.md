@@ -67,7 +67,31 @@ Gelin egzersiz yaparak bu konuyu daha da pekiştirelim.
 
 ## LAB 1
 
-Öncelikle playbook dosyamızı oluşturacağımız dizini oluşturalım.
+Öncelikle hosts dosyamızın içerisine aşağıdaki şekilde node'ları ekleyelim.
+
+````
+mkdir /etc/ansible
+vi /etc/ansible/hosts
+````
+````
+[nodes] #Managed Nodes 
+node2
+node3
+````
+
+Önceki senaryomuzdan ansible hosts dosyamız içindeki node'lara erişim için SSH protokolünü kullandığını biliyoruz. Bu yüzden control node üzerinde ssh key oluşturup managed node’a göndermelisiniz. Aşağıdaki komut ssh key oluşturacaktır. Komutu çalıştırdığınızda karşınıza gelen adımlarda enter tuşuna basara ilerletiniz.
+
+````
+ssh-keygen -t rsa
+````
+Oluşturulan ssh key'i uzaktan bağlanacağımız node'lara aşağıdaki komut ile kopyalıyoruz.
+
+````
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node2
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node3
+````
+
+Playbook dosyamızı oluşturacağımız dizini oluşturalım.
 
 ````
 # mkdir /root/playbook
