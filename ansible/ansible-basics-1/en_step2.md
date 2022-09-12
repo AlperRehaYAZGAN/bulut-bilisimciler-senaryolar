@@ -6,13 +6,5 @@ Bu adımda, Bulut Bilişimciler interaktif platformumuzda öncelikle Ansible kur
 
 `apk add python3` ansible bazı modülleri çalıştırırken python'a ihtiyaç duymaktadır. Bu sebeple gelecek senaryolar için bu kurulumu da gerçekleştirelim. 
 
-````
-# apk add ansible
-# apk add python3
-````
-
 `ansible --version` komutu ile yüklenen ansible versiyonuna bakabiliriz. Böylece ilk ansible komutumuzu da çalıştırmış olduk.
-
-````
-# ansible --version
-````  
+  

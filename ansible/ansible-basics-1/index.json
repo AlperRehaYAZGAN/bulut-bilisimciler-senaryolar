@@ -5,7 +5,11 @@
           "text": "step1.md"
         },
         {
-          "text": "step2.md"
+          "text": "step2.md",
+          "verify":"verify2.json"
+        },
+        {
+          "text": "step3.md"
         },
         {
           "text": "step3.md"
