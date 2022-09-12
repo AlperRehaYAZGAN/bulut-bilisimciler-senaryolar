@@ -1,6 +1,6 @@
 ## Senaryo 2 - Değişiklik Saklama
 
-**Git** proje init   
+**Git** proje init  ile ilk projemizi ilgili dizin altında oluşturuyoruz. Önce ilgili dizini tanımlamamız gerekecek.  
 ```
 mkdir -p /data/git/first_project
 ```
