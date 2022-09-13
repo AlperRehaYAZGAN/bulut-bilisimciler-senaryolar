@@ -13,7 +13,7 @@ Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki ad�
 
 - ``docker --version`` komutunu çalıştırarak Docker servisinin çalıştığından emin olalım.  
 
-- ``docker --version``{{execute}} ile versiyondan emin olalım.
+- ``docker --version`` ile versiyondan emin olalım.
 
 - ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onları inceleyelim.  
 
