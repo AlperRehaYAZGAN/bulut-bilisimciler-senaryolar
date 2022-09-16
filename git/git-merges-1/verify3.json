@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "[ -f /data/git/bb/icerik/golang.txt ] && exit 0"
+    ]
+}
