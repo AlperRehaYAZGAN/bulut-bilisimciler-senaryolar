@@ -13,6 +13,8 @@ Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki ad�
 
 - ``docker --version`` komutunu çalıştırarak Docker servisinin çalıştığından emin olalım.  
 
+- ``docker --version`` ile versiyondan emin olalım.
+
 - ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onları inceleyelim.  
 
 - Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Container Image'ı olan "[Docker Ogar Image](https://hub.docker.com/r/alperreha/ogar3)" uygulamamızı ``docker run --name bb-ogar3 -p 8080:8080 -d alperreha/ogar3:1.0.4`` komutu ile ayağa kaldıralım.  

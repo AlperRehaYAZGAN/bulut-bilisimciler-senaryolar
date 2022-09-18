@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "cd /data/git/bb/ && [[ $(git branch | wc -l) -ge 2 ]] && exit 0"
+    ]
+}

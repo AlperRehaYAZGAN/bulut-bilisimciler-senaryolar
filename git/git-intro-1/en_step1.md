@@ -28,9 +28,16 @@ echo "Bulut Bilisimciler " |git hash-object --stdin
 **HASH** dosya isminden bağımsız içerisindeki değere bağlı olarak değişir.
 ```
 echo "BB" > /tmp/BB1
+```
+BB1-BB2 dosyalarına "BB" içeriğini yazıyoruz.
+```
 echo "BB" > /tmp/BB2
 ```
+BB1 dosyasının hash değerini ekteki komutla alabiliriz. 
 ```
 git hash-object /tmp/BB1
-git hash-object /tmp/BB1
+```
+Ekteki komutla BB2 dosyasının hash değerini kontrol ettiğimizde içerik aynı olduğundan aynı  HASH  değerini gösterecektir.
+```
+git hash-object /tmp/BB2
 ```
