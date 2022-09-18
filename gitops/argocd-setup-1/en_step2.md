@@ -4,7 +4,7 @@
 
 Öncelikle node1 makinemize kubernetes master rolü ile ayağa kalkması ve hazırlanması için aşağıdaki komutu yazıyoruz.  
 
-`kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16`  (Bu komut biraz gerekli yapıyı indirdiği için uzun sürmektedir.)
+`kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16`  (Bu komut uzun sürmektedir.)
   
 Yukarıdaki komut çalışana kadar bekliyoruz. Master makinemize worker rolüne sahip makineleri ekleyebilmemiz için master makinesinde çalıştırdığımız yukarıdaki sorgu sonucunda çıkan `kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}` yapısındaki kodu buluyoruz ve node2 ve node3 isimli iki makine daha oluşturarak bu kodu oradaki makinelere yapıştırıyoruz.  
 
