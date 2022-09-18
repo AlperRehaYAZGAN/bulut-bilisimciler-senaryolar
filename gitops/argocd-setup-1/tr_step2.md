@@ -1,14 +1,17 @@
 ### ArgoCD Kurulumu
 
-+ Kubernetes ortamının ArgoCD'ye hazır ahle getirilmesi.
++ Kubernetes ortamının ArgoCD'ye hazır hale getirilmesi.
 
 Öncelikle node1 makinemize kubernetes master rolü ile ayağa kalkması ve hazırlanması için aşağıdaki komutu yazıyoruz.  
 
-`kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16`  
+`kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16`  (Bu komut biraz gerekli yapıyı indirdiği için uzun sürmektedir.)
   
-Master makinemizin control plane kurulana kadar bekliyoruz. Ardından ise yatayda worker makineleri ekleyebilmemiz için bu sorgu sonucunda çıkan `kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}` benzeri kodu buluyoruz ve node2 ve node3 isimli iki makine daha oluşturarak bu kodu oradaki makinelere yapıştırıyoruz.  
+Yukarıdaki komut çalışana kadar bekliyoruz. Master makinemize worker rolüne sahip makineleri ekleyebilmemiz için master makinesinde çalıştırdığımız yukarıdaki sorgu sonucunda çıkan `kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}` yapısındaki kodu buluyoruz ve node2 ve node3 isimli iki makine daha oluşturarak bu kodu oradaki makinelere yapıştırıyoruz.  
 
-Worker makinelere kodu yapıştırdıktan sonra ana master makinemize gelip `kubectl get nodes` diyoruz ve şöyle bir çıktı almamız lazım:  
+Worker makinelerde:  
+`kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}`  
+
+Bu kodun çalışması sonucunda ana master makinemize gelip `kubectl get nodes` diyoruz ve eklediğimiz worker makineler ile birlikte ekran çıktımız:  
 
 ```
 NAME    STATUS   ROLES                  AGE   VERSION
@@ -17,7 +20,7 @@ node2   NotReady <none>                 10s   v1.20.1
 node3   NotReady <none>                 9s    v1.20.1
 ```  
 
-Makinelerimiz hazır olana kadar bekliyoruz. Biraz süre geçtikten sonra makineler hazır duruma geldiğinde `kubectl get nodes` komutumuzun çıktısı aşağıdaki gibi olmalıdır:  
+Makinelerimiz NotReady durumundan Ready durumuna gelene kadar bekliyoruz. Worker node eklenmesi tamamlandığında `kubectl get nodes` komutumuzun çıktısı aşağıdaki gibi olmalıdır:  
 
 ```
 NAME    STATUS   ROLES                  AGE   VERSION
