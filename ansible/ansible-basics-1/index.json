@@ -32,6 +32,6 @@
       "uilayout": "editor-terminal"
     },
     "backend": {
-      "imageid": "alpine"
+      "imageid": "centos"
     }
   }
