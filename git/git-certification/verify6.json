@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "cd /data/project/bbgit && [[ $(git tag -l|grep "bblatest"|wc  -l) -ge 1 ]] && exit 0"
+    ]
+}

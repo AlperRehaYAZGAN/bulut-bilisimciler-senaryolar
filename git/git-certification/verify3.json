@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "cd /data/project/bbgit && [[ $(git branch |grep deneme| wc -l) -ge 2 ]] && exit 0"
+    ]
+}

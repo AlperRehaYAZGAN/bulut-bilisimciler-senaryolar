@@ -1,7 +1,0 @@
-{
-    "command": [
-        "sh",
-        "-c",
-        "cd /data/git/bb/ && [[ $(git rev-list --all --count) -ge 4 ]] && exit 0"
-    ]
-}

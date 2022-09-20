@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "[[ $(grep "5629b60b1d50b888ae8f25d26a7156338b7a6cc5" /tmp/BB101|wc  -l ) -ge 1 ]] && exit 0"
+    ]
+}

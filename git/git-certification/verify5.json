@@ -1,0 +1,7 @@
+{
+    "command": [
+        "sh",
+        "-c",
+        "cd /data/project/bbgit && [[ $(git reflog show master|grep rebase|wc  -l) -ge 1 ]] && exit 0"
+    ]
+}

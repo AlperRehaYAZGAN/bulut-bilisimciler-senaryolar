@@ -2,12 +2,10 @@
     "scenario": {
       "steps": [
         {
-          "text": "step1.md",
-          "verify": "verify1.json"
+          "text": "step1.md"
         },
         {
-          "text": "step2.md",
-          "verify": "verify2.json"
+          "text": "step2.md"
         }
       ],
       "intro": {
@@ -19,8 +17,8 @@
       },
       "video": {
         "text": {
-          "en": "https://www.youtube.com/embed/RjPdzxvHhK8",
-          "tr": "https://www.youtube.com/embed/RjPdzxvHhK8"
+          "en": "https://www.youtube.com/embed/oI5in9BQJqE",
+          "tr": "https://www.youtube.com/embed/oI5in9BQJqE"
         }
       }
     },
