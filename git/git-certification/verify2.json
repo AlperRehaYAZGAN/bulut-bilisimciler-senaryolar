@@ -2,6 +2,6 @@
     "command": [
         "sh",
         "-c",
-        "[ -f /tmp/BB1 ] && exit 0"
+        "[ -d /data/project/bbgit/.git/ ] && exit 0"
     ]
 }
