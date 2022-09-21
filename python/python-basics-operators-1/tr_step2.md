@@ -4,35 +4,35 @@
  `y=5`
  komutlarını tek tek yazıyoruz ve enter yapıyoruz. Daha sonrasında aşağıdaki işlemleri yapacağız. Ben her seferinde x ve y'yi tekrar tanımladım. Aşağıdaki sonuç çıktıları x=20, y=5 olaraktan gösterilmektedir. Siz eğer ki ilk etapta yazıp hep sonuç üzerinden giderseniz sayılar farklı olacaktır.
  Şimdi başlayalım:
- - Eşittir: `x=y` yaptığımızda artık y=5 olur.
+ - Eşittir: `x=y` yaptığımızda artık y=5 olur. `print(y)`
  ```
  5
  ```
- - Toplam Eşittir: `x+=y` de ise y kadar x'e eklenir. x yazarak çıktıyı bulabiliriz.
+ - Toplam Eşittir: `x+=y` de ise y kadar x'e eklenir. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  25
  ```
- - Eksi Eşittir: `x-=y` de ise y kadar x'den silinir. x yazarak çıktıyı bulabiliriz.
+ - Eksi Eşittir: `x-=y` de ise y kadar x'den silinir. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  15
  ```
- - Çarpım Eşittir: `x*=y` de ise y kadar x çarpılır. x yazarak çıktıyı bulabiliriz.
+ - Çarpım Eşittir: `x*=y` de ise y kadar x çarpılır. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  100
  ```
- - Bölme Eşittir: `x/=y` de ise y kadar x bölünür.. x yazarak çıktıyı bulabiliriz.
+ - Bölme Eşittir: `x/=y` de ise y kadar x bölünür.. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  4.0
  ```
- - Üs Eşittir: `x**=y` de ise y kadar x'in üsü alınır.. x yazarak çıktıyı bulabiliriz.
+ - Üs Eşittir: `x**=y` de ise y kadar x'in üsü alınır.. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  400
  ```
- - Tam Bölme Eşittir: `x//=y`  de ise y kadar x tam bölünme yapar. x yazarak çıktıyı bulabiliriz.
+ - Tam Bölme Eşittir: `x//=y`  de ise y kadar x tam bölünme yapar. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  4
  ```
- - mod Eşittir: x%=y de ise y kadar x'in modu alınır. x yazarak çıktıyı bulabiliriz.
+ - mod Eşittir: x%=y de ise y kadar x'in modu alınır. x yazarak çıktıyı bulabiliriz. `print(x)`
  ```
  0
  ```

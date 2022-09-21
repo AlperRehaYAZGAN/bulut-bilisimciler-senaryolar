@@ -1,6 +1,6 @@
 #### 2)	String Methodları
 
-•	String ifademizin kaç harften oluştuğunu yani uzunluğunu bulabilmek için `len(“python”)` yazarak bulabiliriz. 
+•	String ifademizin kaç harften oluştuğunu yani uzunluğunu bulabilmek için `len("python")` yazarak bulabiliriz. 
 ```
 6
 ```
@@ -12,20 +12,20 @@
 ```
 olur. 
 
-•	String ifademizin tüm harflerini otomati büyük yapmak istersek `“python”.upper()` kullanırız. 
+•	String ifademizin tüm harflerini otomati büyük yapmak istersek `"python".upper()` kullanırız. 
 ```
 ‘PYTHON’
 ```
 çıktısı gelir.
 
-•	Tam tersi büyük harfleri küçük yapmak istersek `“PytHoN”.lower()` kullanırız. 
+•	Tam tersi büyük harfleri küçük yapmak istersek `"PytHoN".lower()` kullanırız. 
 ```
 ‘python’
 ```
 olarak karşımıza gelir.
 
 •	Yazdığımız kodda kaç tane istediğimiz karakteri bulmak için `count()` metodunu kullanabiliriz.
-`(“burası bir playground ortamıdır!!!”).count(“a”)`
+`("burası bir playground ortamıdır!!!"").count("a")`
 yazıp entera basın. Çıktıda gelen sayı sizin “a” harfinizin sayısıdır.
 ```
 3
@@ -33,14 +33,14 @@ yazıp entera basın. Çıktıda gelen sayı sizin “a” harfinizin sayısıd�
 
 
 •	Aradığınız karakter kaçıncı indexte bulmak isterseniz  find() komutu ile
-`(“burası bir playground ortamıdır!!!”).find(“p”)`
+`("burası bir playground ortamıdır!!!").find("p")`
 bu komudu çalıştırın ve çıktıya ulaşın.
 ```
 11
 ```
 
 •	Eğer yazdığınız komutta değişiklik yapmak istiyrsanız `replace()` metodu kullanılır. 
-`(“python çok zevkli bir dildir.”).replace(“zevkli”, “eğlenceli”)`
+`("python çok zevkli bir dildir.").replace("zevkli", "eğlenceli")`
 kodunuz çıktısında zevkli kelimesinin, eğlenceli ile değiştiğini fark edersiniz.
 ```
 'python çok eğlenceli bir dil'

@@ -1,5 +1,5 @@
 ### Python'da Operatörler  
-Bu bölümde aritmetik operatörler, atama operatörleri, karşılaştırma operatörleri ve mantıksal operatörleri öğreneceğiz
+Bu bölümde aritmetik operatörler, atama operatörleri, karşılaştırma operatörleri ve mantıksal operatörleri öğreneceğiz. Bütün işlemler öncesinde `python3` diyerek interaktif python kod ortamımızı açıyoruz.
  
 #### 1) Aritmetik Operatörler
 - Toplama İşelemi: `2+3` yazıp enter dediğimizde toplam sonuç çıktısı ekrana gelir.
