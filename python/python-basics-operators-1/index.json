@@ -1,0 +1,31 @@
+{
+    "scenario": {
+        "steps": [
+            {
+                "text": "step1.md"
+            },
+            {
+                "text": "step2.md"
+            },
+            {
+                "text": "step3.md"
+            },
+            {
+                "text": "step4.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md"
+        },
+        "finish": {
+            "text": "finish.md"
+        },
+        "video": {}
+    },
+    "environment": {
+        "uilayout": "editor-terminal"
+    },
+    "backend": {
+        "imageid": "alpine"
+    }
+}
