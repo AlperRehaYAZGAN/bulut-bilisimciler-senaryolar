@@ -1,0 +1,42 @@
+{
+    "scenario": {
+      "steps": [
+        {
+          "text": "curl-intro-2.md"
+        },
+        {
+          "text": "curl-intro-3.md"
+        },
+        {
+          "text": "curl-intro-4.md"
+        },
+        {
+          "text": "curl-intro-5.md"
+        },
+        {
+          "text": "curl-intro-6.md"
+        },
+        {
+          "text": "curl-intro-7.md"
+        }
+      ],
+      "intro": {
+        "text": "curl-intro-1.md"
+      },
+      "finish": {
+        "text": "curl-intro-8.md"
+      },
+      "video": {
+        "text": {
+          "en": " ",
+          "tr": " "
+        }
+      }
+    },
+    "environment": {
+      "uilayout": "editor-terminal"
+    },
+    "backend": {
+      "imageid": "alpine"
+    }
+  } 
