@@ -11,12 +11,7 @@
         "finish": {
             "text": "finish.md"
         },
-        "video": {
-            "text": {
-                "en": "https://youtube.com/embed/zRiZZwGSl0M",
-                "tr": "https://youtube.com/embed/zRiZZwGSl0M"
-            }
-        }
+        "video": {}
     },
     "environment": {
         "uilayout": "editor-terminal"
