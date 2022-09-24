@@ -16,7 +16,7 @@ Kafka kaynak kodunu indiriyoruz.
 - `tar -zxvf kafka_2.13-3.2.1.tgz && rm kafka_2.13-3.2.1.tgz`  
   
 Kaynak kodu alt klasörden güncel dizinimize alıyoruz.  
-- `mv kafka_2.13-3.2.1 .`  
+- `mv kafka_2.13-3.2.1/* . && rm -rf kafka_2.13-3.2.1`  
   
 Kaynak kodu terminal ekranından direkt olarak erişebilmemiz için /opt/kafka klasörüne taşıyoruz.
 - `mv /ortakatman/kafka /opt/kafka`  
