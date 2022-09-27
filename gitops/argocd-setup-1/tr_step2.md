@@ -1,65 +1,55 @@
-### ArgoCD Kurulumu
+## Senaryo 2
 
-+ Kubernetes ortamının ArgoCD'ye hazır hale getirilmesi.
++ Argo CD Üzerinde Uygulama Oluşturma
 
-Öncelikle node1 makinemize kubernetes master rolü ile ayağa kalkması ve hazırlanması için aşağıdaki komutu yazıyoruz.  
+Merhabalar, Kubernetes ortamı üzerinde Argo CD kurulumumuzu tamamladığımıza göre artık ilk Argo CD uygulamamızı deploy edebiliriz.
 
-`kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16`  (Bu komut uzun sürmektedir.)  
+Argo CD arayüzü üzerinde bir uygulama oluşturmak için "+New App" butonuna tıklanır. Açılan pencere üzerinden uygulama bilgileri doldurulur. Bu örnekte Codefresh'in örnek reposundaki bir uygulamayı deploy edeceğiz. 
 
-Makineler arası haberleşme için cluster networking aktifleştiriyoruz: `kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml`
-  
-Kubeadm init komut çıktısına geri dönüyoruz. Master makinemize worker rolüne sahip makineleri ekleyebilmemiz için master makinesinde çalıştırdığımız "kubeadm init" sorgu sonucunda çıkan `kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}` yapısındaki kodu buluyoruz ve node2 ve node3 isimli iki makine daha oluşturarak bu kodu oradaki makinelere yapıştırıyoruz.  
+Aşağıda açılan pencere üzerinde uygulama bilgilerini girelim:
 
-Worker makinelerde:  
-`kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}`  
+![argo_create_app](https://github.com/aycakcayy/bb-senaryo/raw/master/img1.png)
 
-Bu kodun çalışması sonucunda ana master makinemize gelip `kubectl get nodes` diyoruz ve eklediğimiz worker makineler ile birlikte ekran çıktımız:  
+![argo_create_app2](https://github.com/aycakcayy/bb-senaryo/raw/master/img2.png)
 
-```
-NAME    STATUS   ROLES                  AGE   VERSION
-node1   Ready    control-plane,master   45s   v1.20.1
-node2   NotReady <none>                 10s   v1.20.1
-node3   NotReady <none>                 9s    v1.20.1
-```  
+Son durumda Appliation bilgileri aşağıdaki gibidir:
 
-Makinelerimiz NotReady durumundan Ready durumuna gelene kadar bekliyoruz. Worker node eklenmesi tamamlandığında `kubectl get nodes` komutumuzun çıktısı aşağıdaki gibi olmalıdır:  
++ application name : `demo`
++ project: `default`
++ repository URL: `https://github.com/codefresh-contrib/gitops-certification-examples`
++ path: `./simple-app`
++ Cluster: `https://kubernetes.default.svc` 
++ namespace: `default`
 
-```
-NAME    STATUS   ROLES                  AGE   VERSION
-node1   Ready    control-plane,master   20m   v1.20.1
-node2   Ready    <none>                 19m   v1.20.1
-node3   Ready    <none>                 19m   v1.20.1
-```  
+Diğer parametreleri boş bırakarak Create butonuna tıkladığımızda demo uygulamamız aşağıdaki şekilde oluşur.
 
-Kubernetes ortamımız kurulduğuna göre ArgoCD kurulumuna geçebiliriz.
+![argo_create_app3](https://github.com/aycakcayy/bb-senaryo/raw/master/img3.png)
 
-+ Argo CD Kurulumu
+Argo CD bizlere uygulamamızı otomatik veya manuel şekilde sync etme seçeneği sunar. Şanki uygulamamızda sync durumu manuel olacak şekilde bir seçim yaparak ilerledik. Yani biz manuel olarak tetiklemediğimiz sürece uygulama sync durumuna geçmeyecektir.
 
-Uygulamaları dağıtabilmemizi sağlayan Argo CD aracını clusterımıza yükleyelim. Halihazırda Kubernetes kurulu ortamımızda aşağıdaki adımları izleyerek Argo CD kurabiliriz.
+Uygulama şuanda OutOfSync durumundadır. Bunun anlamı;
 
-Öncelikle argocd isminde bir namespace oluşturalım. `kubectl create namespace argocd`
++ Cluster boş
++ Git reposunda bir uygulama var
++ Bu nedenle Git durumu ve cluster durumu farklıdır. Git reposu ve cluster sync durumda değildir. (OutOfSync)
 
-`kubectl apply -n argocd -f https://gist.githubusercontent.com/AlperRehaYAZGAN/15b009980e20486f2bd08deb5e8eea64/raw/7184d4bd91b9e117ae61c8e07dd19648710f0e12/argocd_stable_mirror.yaml` komutu ile Argo CD GitHub sayfasında yer alan tanım dosyalarının bizim ortamımız için özelleşmiş hali ile kurulumu gerçekleştirebiliriz.
+Ayrıca CLI’da aşağıdaki komutu çalıştırarak herhangi bir deployment oluşmadığını da görebiliriz.
 
-`kubectl get all -n argocd` komutu ile Argoocd namespace'inde oluşturulan objeleri listeleyelim.
+`kubectl get deployments` 
 
-Varsayılan olarak Argo CD API sunucusu harici bir IP ile ile expose edilmez. Bunun için argocd-server servis tipini LoadBalancer olarak değiştirelim.
+![argo_create_app4](https://github.com/aycakcayy/bb-senaryo/raw/master/img4.png)
 
-`kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}' `  
+Application’ı oluştururken sync policy parametresini manuel olarak seçtiğimiz için, sync butonuna basarak uygulamayı manuel olarak tetiklemeliyiz. Sync olduktan sonra uygulamamız içine girdiğimizde aşağıdaki şekilde gözükecektir.
 
-Ayağa kalkan ArgoCD uygulamamızın hangi portta çalıştığını bulabilmemiz için aşağıdaki kodu çalıştırıyoruz.  
+![argo_create_app5](https://github.com/aycakcayy/bb-senaryo/raw/master/img6.png)
 
-`kubectl get svc --all-namespaces -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}'`  
+Tüm kalper yeşil! Uygulamamız başarıyla deploy oldu!
 
-Bu komut sonrası karşımıza çıkan iki port numarasını da sağ yukarıdaki bölgede bulunan makine ve port bilgileri kısmına yazıp makinelere erişmeye çalışıyoruz.  
+Tekrar `kubectl get deployments` dediğimizde oluşan uygulamamızı artık görüntüleyebiliriz.
 
+Burada aynı zamanda Argo CD arayüzü sayesinde görselleştirilmiş bir cluster görebiliyoruz. Demo uygulamamızda yer alan,
+replicaset, endpoint, pod objelerini görüntüleyebiliyoruz. Uçtan uca görselleştirilmiş bir deployment!
 
-Artık API Server'a sağ yukarıdaki erişim paneli üzerinden erişilebilir. Gidip ArgoCD arayüzü ile tanışma zamanı!
+![argo_create_app6](https://github.com/aycakcayy/bb-senaryo/raw/master/img5.png)
 
-Admin hesabının ilk parolası otomatik olarak oluşturulur ve Argo CD kurulum ad alanınızda argocd-initial-admin-secret adlı bir gizli alan parolasında açık metin olarak saklanır. Bu şifreyi kubectl kullanarak kolayca alabilirsiniz. Başka bir terminal tab'ı içerisinde aşağıdaki komutu çalıştırın.
-
-`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`
-
-Artık kullanıcı admin olan Argocd hesabının password bilgisine sahipsiniz. Bu bilgiler ile https://localhost:8080 adresinden ArgoCD'ye giriş sağlayabilirsiniz.
-
-Tebrikler ArgoCD kurulumunu tamamladınız.
+Arayüz üzerinden “delete” butonuna basarak uygulamayı silip, demo çalışmasını bitirebiliriz. 

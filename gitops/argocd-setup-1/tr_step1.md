@@ -1,46 +1,29 @@
-# GitOps ve Argo CD  
+## Senaryo 1
 
-### Seviye: Başlangıç
++ Argo CD Kurulumu
 
-### Neden GitOps?
+Uygulamaları dağıtabilmemizi sağlayan Argo CD aracını clusterımıza yükleyelim. Halihazırda Kubernetes kurulu ortamımızda aşağıdaki adımları izleyerek Argo CD kurabiliriz.
 
-Günümüzde hızla değişen ve genişleyen yazılım geliştirme dünyasında, dinamik bir yapıda olmak ve yeniliklere adapte olmak oldukça önemli. Zaman içerisinde, ihtiyaçları hızlı karşılayamadığımız Waterfall modelinden Agile’a geçiş yaptık. Daha küçük değişikliklerle, küçük iterasyonlarla hedefi yakalamaya başladık. Bu çevik yapının içinde, sürekli değişimleri karşılamak adına operasyon ve geliştirme takımlarının iç içe geçtiği devops kültürünü oluşturduk. Günümüz modern dünyasında ise daha büyük challengelar ile başbaşayız. Containerization’ın yaygınlaşması, Kubernetes’in hayatımıza girmesiyle beraber, herhangi bir Git reposu üzerinde tutulan uygulamaların bu Kubernetes cluster ları üzerine merkezi bir yerden deploy olması ve yönetilmesi bunlardan biri. GitOps’a bu yüzden ihtiyaç duyuyoruz.
+Öncelikle argocd isminde bir namespace oluşturalım. `kubectl create namespace argocd`
 
-### GitOps Nedir?
+`kubectl apply -n argocd -f https://gist.githubusercontent.com/aycakcayy/7418df830d26028ec16f399a2e57a026/raw/281a4fcb4aed799ec2c6cc87ec6a55cc58640453/argocd_mirror.yaml` komutu ile Argo CD GitHub sayfasında yer alan tanım dosyaları ile kurulumu gerçekleştirebiliriz.
 
-Genel bir tanımla; GitOps, versiyon kontrol, işbirliği, uyumluluk ve CI/CD araçları gibi uygulama geliştirme için kullanılan DevOps best practice'lerini alan ve bunları altyapı otomasyonuna uygulayan operasyonel bir çerçevedir.
+`kubectl get all -n argocd` komutu ile Argoocd namespace'inde oluşturulan objeleri listeleyelim.
 
-### Argo CD Nedir?
+Varsayılan olarak Argo CD API sunucusu harici bir IP ile ile expose edilmez. Bunun için port-forwarding ile API Server'a bağlanacağız.
 
-Argo CD; Kubernetes için bildirime dayalı, GitOps metodolojisini izleyen bir sürekli teslim aracıdır.
+`kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'`
 
-“Uygulama tanımları, konfigürasyonları ve ortamları bildirime dayalı ve versiyon kontrollü olmalıdır” mantığı ile çalışır. Uygulama dağıtımı ve yaşam döngüsü yönetiminin otomatikleştirilmiş, denetlenebilir ve anlaşılabilir olmasını sağlar.
+`kubectl get svc --all-namespaces -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}'`
 
-### Argo CD Nasıl Çalışır?
+(Yukarıdaki komutun çalışması sonucunda ArgoCD Server kullanıcı arayüzümüzün çalışacağı port numarasını alacağız. Bu port numarasını kullanarak ArgoCD'ye sağ yukarı bulunan ilgili butonlar ile giriş yapabilirsiniz.)
 
-Argo CD belirli periyotlarda Kubernetes’e deploy edilmiş uygulamaları izler ve Git reposunda yer alan tanım dosyalarıyla karşılaştırmalar yapar. Herhangi bir farklılık durumunu kullanıcıyı bildirir ya da belirtilirse otomatik olarak senkronizasyon işlemini gerçekleştirir.
+Admin hesabının ilk parolası otomatik olarak oluşturulur ve Argo CD kurulum ad alanınızda argocd-initial-admin-secret adlı bir gizli alan parolasında açık metin olarak saklanır. Bu şifreyi kubectl kullanarak kolayca alabilirsiniz. Başka bir terminal tab'ı içerisinde aşağıdaki komutu çalıştırın.
 
-### Neden Argo CD ?
+`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`
 
-+ Kubernetes cluster'ınızı görselleştirir. Yani bir deployment inizi replica set,pod vb.kuberetes objeleri şeklinde görüntülenebilir.
-+ Helm, customize, yaml tanım dosyalarını destekliyor.
-+ Birden fazla kubernetes cluster ile entegre edilebiliyor.
-+ İmperative bir şekilde kubectl kullanmıyorsunuz, yapınızı declarative yapıyorsunuz yani yaptığınız değişikliği Argo CD algılayıp Kubernetes’e yüklenmesini sağlıyor.
-+ Kubernetes cluster'ınızda bir deployment silindi veya bir kesinti yaşadınız; Argo CD hem git reposu hem Kubernetes'i sürekli monitor ettiğinden ikisi arasında fark olduğunu anlayıp silinen deployment'ı tekrar yerine getirebilir.
+Artık kullanıcı admin olan Argocd hesabının password bilgisine sahipsiniz. Bu bilgiler ile https://localhost:8080 adresinden ArgoCD'ye giriş sağlayabilirsiniz.
 
-### Öğrenme Hedefleri
+Bizleri aşağıdaki gibi bir Argo CD arayüzü karşılıyor olacak!
 
-GitOps senaryosunu tamamladıktan sonra;
-
-+ GitOps prensibinin ne olduğu,
-+ ArgoCD aracının ne işe yaradığıu ve nasıl kurulduğu hakkında bilgi sahibi olacaksınız.
-
-### Ön gereksinimler
-
-+ Linux dağıtımlarından en az birine aşina olmalı ve kullanabiliyor olmalısınız.
-+ Docker ve podman gibi container araçlarını kullanabiliyor olmalısınız.
-+ Kubernetes container orkestrasyonu hakkında bilgi sahibi olmalısınız.
-
-
-
-
+![argo_homepage](https://github.com/aycakcayy/bb-senaryo/raw/master/screenpage.png)
