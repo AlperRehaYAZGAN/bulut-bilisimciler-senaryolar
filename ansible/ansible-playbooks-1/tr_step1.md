@@ -10,6 +10,9 @@ playbook.yml dosyalarının çalıştırılması için ise ansible `ansible-play
 
 Gelin egzersiz yaparak bu konuyu daha da pekiştirelim.
 
+#### Gereksinimler:  
+Node1 makinesine giriş yapıp senaryo öncesinde `apk add ansible` komutunu çalıştırıp ansible kurulumunu tamamlamış olmalısınız.
+
 ## LAB 1
 
 Öncelikle hosts dosyamızın içerisine aşağıdaki şekilde node'ları ekleyelim.
@@ -21,7 +24,8 @@ mkdir /etc/ansible
 vi /etc/ansible/hosts
 ````
 ````
-[nodes] #Managed Nodes 
+# Managed Nodes 
+[nodes] 
 node2
 node3
 ````

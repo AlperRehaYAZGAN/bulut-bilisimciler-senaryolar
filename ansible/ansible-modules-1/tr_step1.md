@@ -1,6 +1,9 @@
 ## Ansible Module Kullanımı
 ### Seviye: Başlangıç  
 
+#### Gereksinimler:  
+Node1 makinesine giriş yapıp senaryo öncesinde `apk add ansible && apk add python3` komutunu çalıştırıp ansible kurulumunu tamamlamış olmalısınız.
+
 ### Ad-Hoc Komutları ile Ansible Modül Kullanımı
 
 Bu bölümde, Ansible Ad-hoc hoc komutlarını kullanarak dosya kopyalama işlemi yapacağız.
