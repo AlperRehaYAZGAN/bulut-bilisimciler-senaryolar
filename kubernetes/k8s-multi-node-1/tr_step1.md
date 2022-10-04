@@ -1,6 +1,5 @@
-# İki Node Kubernetes Kurulumu  
-
-## Bu Senaryoda Verilen iki node'a Kubernetes kurulumu yapacağız.  
+# Multi Node Kubernetes Cluster Kurulumu  
+Bu senaryoda sizlere verilen iç adet makineye birini yönetici(Master) rolünde seçerek kalan makinlerin de çalışan(Worker) rolünde olacağı bir küme topolojisi kuracağız.  
 
 ###  Seviye: Başlangıç  
 
