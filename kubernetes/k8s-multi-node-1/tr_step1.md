@@ -1,36 +1,37 @@
-# Multi Node Kubernetes Cluster Kurulumu  
-Bu senaryoda sizlere verilen iç adet makineye birini yönetici(Master) rolünde seçerek kalan makinlerin de çalışan(Worker) rolünde olacağı bir küme topolojisi kuracağız.  
+### Kubernetes Çoklu Worker Ortamı Kurulumu  
 
-###  Seviye: Başlangıç  
+Bu senaryo ile Kubernetes ortamınızda birden fazla worker node oluşturup, master node üzerinden bu worker node'lara erişebilir hale getireceksiniz. Başlayalım 🎬...  
 
-Docker Container Runtime uygulaması kendi uygulama motoru ile Container Paketi haline getirilmiş uygulamaları çalıştırabilmekte ve deploy(dağıtıma çıkarma) operasyonlarını kolaylaştırabilmektedir. Kodlama dünyasında açık kaynak yazılım ekipleri tarafından geliştirilen büyük projeler de artık Docker Image'ları haline getirilip push-to-deploy kavramınca ürüne dönüşmektedirler. Bizler de bu senaryomuzda sizlerle 2015 yılında çıkan ve 300 bin kişi tarafından canlı olarak oynanan bir oyun olan Agar.io oyununun açık kaynak replika projesi olan Ogar projesini birlikte saniyeler içerisinde çalıştıracağız ve isteyen herkesin bu uygulamaya erişebilmesini basit Docker komutlarını uygulayarak gerçekleştireceğiz.  
+Öncelikle node1 makinemize kubernetes master rolü ile ayağa kalkması ve hazırlanması için aşağıdaki komutu yazıyoruz.  
 
-![Mimari](https://cdn.bulutbilisimciler.com/public/images/pg/bba-scenario-ogar.png)
-#### Talimatlar  
+- Master Kurulumu(Node1 mmakinesinde)  
+`kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16`  (Bu komut uzun sürmektedir. Tamamlanmasını bekleyiniz.)  
 
-Uygulamalarımızı servis eder hale getirmek için sırasıyla aşağıdaki adımları gerçekleştirmemiz gerekmektedir.  
+Master makinesini ayağa kaldırdıktan sonra ise makineler arası haberleşme için cluster networking aktifleştiriyoruz: `kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml`  
 
-- ``docker --version`` komutunu çalıştırarak Docker servisinin çalıştığından emin olalım.  
+- Worker Kurulumları(Node2 ve Node3 makinelerinde)  
+Kubeadm Kubernetes Cluster kurulumunda Worker rolüne sahip makineler ekleyebilmemiz için Master rolüne sahip makinemizi ilk çalıştırdığımız zaman oluşan anahtarı kullanmamız gerekmektedir. Kubeadm init komut çıktısına geri dönüyoruz. Master makinemize worker rolüne sahip makineleri ekleyebilmemiz için master makinesinde çalıştırdığımız **kubeadm init** sorgu sonucunda çıkan `kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}` yapısındaki kodu buluyoruz ve node2 ve node3 isimli iki makineye geçiş yapıp çalıştırıyoruz. 
 
-- ``docker ps`` komutunu çalıştırarak güncel olarak çalışmakta olan servis var mı onu kontrol edelim ve hangi uygulamalar şu anda çalışmakta onları inceleyelim.  
+Worker makinelerde(Node2, Node3):  
+`kubeadm join ${MASTER_IP_PORT} --token ${MASTER_TOKEN} --discovery-token-ca-cert-hash sha256:${MASTER_SHA256_TOKEN}`  
 
-- Docker servisimiz ayakta ve çalışmakta. Şimdi Docker Container Image'ı olan "[Docker Ogar Image](https://hub.docker.com/r/alperreha/ogar3)" uygulamamızı ``docker run --name bb-ogar3 -p 8080:8080 -d alperreha/ogar3:1.0.4`` komutu ile ayağa kaldıralım.  
+Bu kodun çalışması sonucunda ana master makinemize geçiyoruz ve worker makineler ile birlikte aşağıdaki komutu çalıştırıyoruz ve ekran çıktımızı inceliyoruz:  
+`kubectl get nodes`  
 
-- Tebrikler Docker ile canlı oyun uygulamanızı çalıştırdınız! Şimdi çalıştırdığınız uygulamanın statü halini kontrol etmeniz için ``docker ps`` diyerek ayakta olan uygulamaları inceleyiniz.  
+```
+NAME    STATUS   ROLES                  AGE   VERSION
+node1   Ready    control-plane,master   45s   v1.20.1
+node2   NotReady <none>                 10s   v1.20.1
+node3   NotReady <none>                 9s    v1.20.1
+```  
 
-- Uygulamanızı "bb-ogar3" ismine ait bir şekilde listede görüntüleyebiliyorsanız başarıyla uygulamayı ayağa kaldırmış ve hizmet veriyor hale getirmişsiniz demektir.  
+Makinelerimiz **NotReady** durumundan **Ready** durumuna gelene kadar bekliyoruz. Worker node eklenmesi tamamlandığında `kubectl get nodes` komutumuzun çıktısı aşağıdaki gibi olmalıdır:  
 
-- Çalışan uygulamaya erişmek için sağ yukarıda bulunan "Sunucuya Eriş" butonuna tıklayarak uygulamayı ayağa kaldırdığınız port olan "8080" port numarasını veya o servisin önüne koyduğunuz yönlendirici servis olan (Gateway) "80" portunu girerek servisinize erişebilirsiniz.  
+```
+NAME    STATUS   ROLES                  AGE   VERSION
+node1   Ready    control-plane,master   20m   v1.20.1
+node2   Ready    <none>                 19m   v1.20.1
+node3   Ready    <none>                 19m   v1.20.1
+```  
 
-- Tebrikler Ogar Çok Oyunculu Web Browser oyun uygulamanıza erişebildiniz ve dış dünyaya hizmet veren bir uygulamayı 5 dakikadan kısa bir süre içerisinde dağıtıma(deploy) çıkarttınız.  
-
-Bu eğitimle birlikte Docker ile Web Tarayıcı oyun uygulamanızı Temel Docker Komutları kullanarak çalıştırdınız ve HTTP Web Servis uygulamalarının sunucu tarafında nasıl çalıştırılabildiğini incelediniz.  
-
-Yeni Senaryolarla Öğrenmeye Devam.  
-
-
-
-
-
-
-
+Kubernetes ortamımız kurulduğuna göre test edebilecğeimiz uygulamaların kurulumuna geçebiliriz.
